@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title">Listado de mis Couches</h3>
@@ -94,3 +95,9 @@
         </div>
         
     <% end %>
+
+<%else%>
+  <script type="text/javascript">
+    window.location.href="/users/sign_in"  // put your correct path in a string here
+  </script>
+<% end %>
