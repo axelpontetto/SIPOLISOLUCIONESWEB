@@ -1,0 +1,95 @@
+<div class="row">
+ 
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Crear Couch</h3>
+      </div>
+      <div class="panel-body">
+
+        <%= form_for(@couch) do |f| %>
+
+        <form>
+
+           <div class="form-group">
+              <%= f.label :nombre, 'Nombre' %><br />
+              <%= f.text_field :nombre, required: true, autofocus: true, class:"form-control" %>
+              <% if @couch.errors.messages[:nombre] && !@couch.errors.messages[:nombre].empty? %>
+                <%= "El campo esta vacio o el nombre es invalido" %>
+              <%end%>
+            </div>
+            <div class="form-group">
+              <%= f.label :category_id, 'Tipo de Couch' %>
+              <%= collection_select(:couch, :category_id, Category.where(estado: true), :id, :nombre) %>
+            </div>
+            <div class="form-group">
+            <%= f.label :pais, "Pais" %></br>
+            <%= f.text_field :pais, required: true, autofocus: true, class:"form-control" %>
+            <% if @couch.errors.messages[:pais] && !@couch.errors.messages[:pais].empty? %>
+                <%= "El pais es invalido" %>
+              <%end%>
+          </div>
+            <div class="form-group">
+            <%= f.label :provincia, "Provincia" %></br>
+            <%= f.text_field :provincia, required: true, autofocus: true, class:"form-control" %>
+            <% if @couch.errors.messages[:provincia] && !@couch.errors.messages[:provincia].empty? %>
+                <%= "La provincia ingresada es invalida" %>
+              <%end%>
+          </div>
+          <div class="form-group">
+            <%= f.label :ciudad, "Ciudad" %></br>
+            <%= f.text_field :ciudad,required: true, autofocus: true, class:"form-control" %>
+            <% if @couch.errors.messages[:ciudad] && !@couch.errors.messages[:ciudad].empty? %>
+                <%= "La ciudad ingresada no es valida" %>
+              <%end%>
+          </div>
+          <div class="form-group">
+            <%= f.label :capacidad, "Cantidad de personas" %></br>
+            <%= f.number_field :capacidad, required: true, autofocus: true, class:"form-control" %>
+            <% if @couch.errors.messages[:capacidad] && !@couch.errors.messages[:capacidad].empty? %>
+                <%= "La capacidad no es valida" %>
+              <%end%>
+          </div>
+            <div class="form-group">
+              <%= f.label :url, "Foto 1" %><br />
+              <%= f.text_field :url, autofocus: true, class:"form-control" %>
+              <% if @couch.errors.messages[:url] && !@couch.errors.messages[:url].empty? %>
+                <%= "La url no es valida" %>
+              <%end%>
+            </div> 
+            <div class="form-group">
+            <%= f.label :url2, "Foto 2" %></br>
+            <%= f.text_field :url2, autofocus: true, class:"form-control" %>
+            <% if @couch.errors.messages[:url2] && !@couch.errors.messages[:url2].empty? %>
+                <%= "La url no es valida" %>
+              <%end%>
+          </div>
+          <div class="form-group">
+            <%= f.label :url3, "Foto 3" %></br>
+            <%= f.text_field :url3, autofocus: true, class:"form-control" %>
+            <% if @couch.errors.messages[:url3] && !@couch.errors.messages[:url3].empty? %>
+                <%= "La url no es valida" %>
+              <%end%>
+          </div>
+          <div class="form-group">
+              <%= f.label :descripcion, "Descripcion" %><br />
+              <%= f.text_area :descripcion, autofocus: true, class:"form-control" %>
+              <% if @couch.errors.messages[:descripcion] && !@couch.errors.messages[:descripcion].empty? %>
+                <%= "La descripcion no es valida" %>
+              <%end%>
+            </div> 
+            <div class="form-group">
+              <%= f.submit "Crear Couch", class: "btn btn-success btn-block"%>
+            </div>
+
+    
+        </form>
+        
+        <%end%>
+       
+      </div>
+    </div>    
+
+</div>
+
+</div>

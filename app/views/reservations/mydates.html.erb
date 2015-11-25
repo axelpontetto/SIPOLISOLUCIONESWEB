@@ -1,0 +1,35 @@
+ <% user= User.find (@reservation.couch.user_id) %>
+
+ <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  	<div class="panel panel-success">
+  		<div class="panel-body">
+    		<div class="row">
+    			<table class="table table-bordered">
+    				  <tbody>
+          					<tr>
+          						<td>Usuario: </td>
+          						<td> <%= user.name %> </td>
+          					</tr>
+          					<tr>
+          						<td>Apellido: </td>
+          						<td> <%= user.apellido %> </td>
+          					</tr>
+          					<tr>
+          						<td>Email: </td>
+          						<td> <%= user.email %> </td>
+          					</tr>
+          						<tr>
+          						<td>Telefono: </td>
+          						<td> <%= user.telefono %> </td>
+          					</tr>
+          					<tr>
+          						<%= link_to "Volver a mis Reservas", myreservations_reservations_path,  :class => "btn btn-success" %>
+          					</tr>
+          			  </tbody>
+    			</table>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>

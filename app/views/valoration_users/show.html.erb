@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @valoration_user.valor %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @valoration_user.user_id %>
+</p>
+
+<p>
+  <strong>Reservation:</strong>
+  <%= @valoration_user.reservation_id %>
+</p>
+
+<%= link_to 'Edit', edit_valoration_user_path(@valoration_user) %> |
+<%= link_to 'Back', valoration_users_path %>

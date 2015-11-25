@@ -1,0 +1,55 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Mis Reservas</h3>
+  </div>
+</div>
+
+<% current_user.reservations.each do |reservation| %>
+
+ <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Couch Reservado</th>
+          <th>Usuario</th>
+          <th>Fecha de Ingreso</th>
+          <th>Fecha de Egreso</th>
+          <th>Confirmacion</th>
+          <th>Valorar Couch</th>
+          <th>Valorar Usuario</th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+          <tr>
+            <td><%= reservation.couch.nombre %></td>
+            <% if reservation.confirmacion == true %>
+              <td><%= link_to "Ver Contacto", mydates_reservation_path(id: reservation.id) %></td>
+            <%else%>
+                <td>Esperando Confirmacion</td>
+            <%end%>
+            <td><%= reservation.fech_ing %></td>
+            <td><%= reservation.fech_egr %></td>
+            <% if reservation.confirmacion == false %>
+              <td>En espera</td>
+              <td>No permitido</td>
+              <td>No permitido</td>
+            <%else%>
+              <td>Confirmada</td>
+              <% if reservation.valorar == false %>
+                <td><%=link_to "Generar Valoracion", new_couch_valoration_path(couch_id: reservation.couch.id, reservation_id: reservation.id )%></td>
+              <%else%>
+                <td>Valoracion Realizada </td>
+              <%end%>
+
+              <% if reservation.valorar_user == false %>
+                 <td> <%=link_to"Generar Valoracion", new_valoration_user_path(user_id: reservation.couch.user_id,  reservation_id: reservation.id) %>  </td>
+              <%else%>
+                 <td>Valoracion Realizada</td>
+              <%end%>
+            <%end%>
+            </tr>
+       </tbody>
+       </table>
+
+<%end%>

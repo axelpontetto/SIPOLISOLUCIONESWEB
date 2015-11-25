@@ -1,0 +1,60 @@
+<% u_id = @couch.user_id %>
+<% user = User.find(u_id) %>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @couch.nombre%></h3>
+  </div>
+</div>
+
+        <div class="panel panel-success">
+            <div class="panel-body">
+
+            <div class="row">
+                <div class="col-xs-6"><%= image_tag @couch.url, class: "img-responsive img-rounded" %></div>
+                <div class="col-xs-6">
+                        <div class="panel panel-success">
+                            
+                            <div class="panel-body">
+
+                                <h5>Descripcion: <%=@couch.descripcion%></h5>  
+                                
+                                <h5>Capacidad: <%=@couch.capacidad%></h5>  
+
+                                <h5>Calificacion: agregar campo</h5>  
+
+                                <h5>Pais: <%=@couch.pais%></h5>  
+
+                                <h5>Provincia: <%=@couch.provincia%></h5>  
+
+                                <h5>Ciudad: <%=@couch.ciudad%></h5>  
+
+                                
+                            </div>
+                            
+                        </div>
+                                   
+                </div>
+            </div>
+                
+            </div>
+        </div>
+</div>
+</div>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

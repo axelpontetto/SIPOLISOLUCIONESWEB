@@ -1,0 +1,279 @@
+
+
+<% m = 1 %>
+
+
+<h1>Busqueda</h1>
+
+
+
+
+
+<% if m == 1 %>
+
+<% c = "casa" %>
+
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Listado de Couches</h3>
+  </div>
+</div>
+
+<% User.premium.each do |user|%>
+
+    <% user.couches.where(nombre: "#{c}").each do |couch| %>
+
+        <div class="panel panel-success">
+            <div class="panel-body">
+
+            <div class="row">
+                <div class="col-xs-6"><%= image_tag couch.url, class: "img-responsive img-rounded" %></div>
+                <div class="col-xs-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Nombre: <%=couch.nombre%></h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <h5>Pais:<%=couch.pais%></h5>  
+                                <h5>Provincia: <%=couch.provincia%></h5>
+                                <h5>Ciudad: <%=couch.ciudad%></h5>
+                                
+                            </div>
+
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Valoracion</h2>
+                            </div>
+                            <div class="panel-body">
+
+                            <% n = get_prom(couch).to_i %>
+
+                            <% x = 1 %>
+
+                            <% loop do %>
+                                <% x += 1%>
+                                <%= link_to image_tag("star.png", alt: "New Think Tank"), 
+                                     {:controller => 'couches', :action => 'index' },     
+                                     {:class => 'starLogo'} %>
+                                <% break if x > n %>
+                            <% end %>
+
+                            <%= form_for([couch, couch.valorations.build]) do |f| %>
+                                <h2>Valorar Couch</h2>
+                                <h4>Valorar(1 a 5): <%= f.text_field :valor %> </h4>
+                                <h4><%= f.submit "Valorar" %></h4>
+                            <% end %>
+                
+                            </div>
+                        </div>
+
+
+
+            
+               
+
+
+
+                <h2>Valoraciones</h2>
+                <% couch.valorations.each do |valoration|%>
+
+                <h4>Valor: <%= valoration.valor %> </h4>
+                <% end %>
+
+                            
+                        </div>
+                        <% if user_signed_in? %>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Acciones</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-6">
+                                        <%= button_to "Ver Detalles",couch, :class => "btn btn-success", :method => :get%></br>
+                                        </div>
+                                        <div class="col-xs-6">
+                                        <%= button_to "Ver Comentarios", couch , :class => "btn btn-success", :method => :get%></br>
+                                        </div>
+                                    </div>
+                                    
+                                        <div class="col-xs-6">
+                                            <% if current_user.id != couch.user_id %>
+                                                <div class="col-xs-6">
+                                            
+                                                    <%= link_to "Reservar", new_reservation_path(couch_id: couch.id) ,:class => "btn btn-success"%></br>
+                                            
+                                                </div>
+                                            <% end %>
+                                        <div class="col-xs-6">
+                                        <%user = User.find(couch.user_id)%>
+
+                                        <% if current_user.name == user.name %>
+                                            <%= button_to "Borrar", couch ,:class => "btn btn-success", :method => :delete, data: { confirm: 'Va a eliminar una categoria. Esta seguro?'}%></br>
+                                        <%end%>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-6">
+                                            <% if current_user.name == user.name %>
+                                            <%= button_to "Editar", edit_couch_path(couch) ,:class => "btn btn-success", :method => :get%></br>
+                                        <%end%>
+                                        </div>
+                                        <div class="col-xs-6">
+                                        
+                                        </br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <%end%>
+                                   
+                </div>
+            </div>
+                
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+
+<% else %>
+
+<h2> Busqueda por lugar </h2>
+
+<% p = "Mendoza" %>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Listado de Couches</h3>
+  </div>
+</div>
+
+<% User.premium.each do |user|%>
+
+    <% user.couches.where(provincia: "#{p}").each do |couch| %>
+
+        <div class="panel panel-success">
+            <div class="panel-body">
+
+            <div class="row">
+                <div class="col-xs-6"><%= image_tag couch.url, class: "img-responsive img-rounded" %></div>
+                <div class="col-xs-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Nombre: <%=couch.nombre%></h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <h5>Pais:<%=couch.pais%></h5>  
+                                <h5>Provincia: <%=couch.provincia%></h5>
+                                <h5>Ciudad: <%=couch.ciudad%></h5>
+                                
+                            </div>
+
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Valoracion</h2>
+                            </div>
+                            <div class="panel-body">
+
+                            <% n = get_prom(couch).to_i %>
+
+                            <% x = 1 %>
+
+                            <% loop do %>
+                                <% x += 1%>
+                                <%= link_to image_tag("star.png", alt: "New Think Tank"), 
+                                     {:controller => 'couches', :action => 'index' },     
+                                     {:class => 'starLogo'} %>
+                                <% break if x > n %>
+                            <% end %>
+
+                            <%= form_for([couch, couch.valorations.build]) do |f| %>
+                                <h2>Valorar Couch</h2>
+                                <h4>Valorar(1 a 5): <%= f.text_field :valor %> </h4>
+                                <h4><%= f.submit "Valorar" %></h4>
+                            <% end %>
+                
+                            </div>
+                        </div>
+
+
+
+            
+               
+
+
+
+                <h2>Valoraciones</h2>
+                <% couch.valorations.each do |valoration|%>
+
+                <h4>Valor: <%= valoration.valor %> </h4>
+                <% end %>
+
+                            
+                        </div>
+                        <% if user_signed_in? %>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Acciones</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-6">
+                                        <%= button_to "Ver Detalles",couch, :class => "btn btn-success", :method => :get%></br>
+                                        </div>
+                                        <div class="col-xs-6">
+                                        <%= button_to "Ver Comentarios", couch , :class => "btn btn-success", :method => :get%></br>
+                                        </div>
+                                    </div>
+                                    
+                                        <div class="col-xs-6">
+                                            <% if current_user.id != couch.user_id %>
+                                                <div class="col-xs-6">
+                                            
+                                                    <%= link_to "Reservar", new_reservation_path(couch_id: couch.id) ,:class => "btn btn-success"%></br>
+                                            
+                                                </div>
+                                            <% end %>
+                                        <div class="col-xs-6">
+                                        <%user = User.find(couch.user_id)%>
+
+                                        <% if current_user.name == user.name %>
+                                            <%= button_to "Borrar", couch ,:class => "btn btn-success", :method => :delete, data: { confirm: 'Va a eliminar una categoria. Esta seguro?'}%></br>
+                                        <%end%>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="col-xs-6">
+                                            <% if current_user.name == user.name %>
+                                            <%= button_to "Editar", edit_couch_path(couch) ,:class => "btn btn-success", :method => :get%></br>
+                                        <%end%>
+                                        </div>
+                                        <div class="col-xs-6">
+                                        
+                                        </br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <%end%>
+                                   
+                </div>
+            </div>
+                
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
+
+<% end %>
