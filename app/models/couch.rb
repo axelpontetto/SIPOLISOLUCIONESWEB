@@ -19,5 +19,6 @@ class Couch < ActiveRecord::Base
 	belongs_to :category
     has_many :reservations
     has_many :valorations
+    has_many :images, dependent: :destroy
 
 end

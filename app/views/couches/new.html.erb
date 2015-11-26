@@ -51,27 +51,6 @@
                 <%= "La capacidad no es valida" %>
               <%end%>
           </div>
-            <div class="form-group">
-              <%= f.label :url, "Foto 1" %><br />
-              <%= f.text_field :url, autofocus: true, class:"form-control" %>
-              <% if @couch.errors.messages[:url] && !@couch.errors.messages[:url].empty? %>
-                <%= "La url no es valida" %>
-              <%end%>
-            </div> 
-            <div class="form-group">
-            <%= f.label :url2, "Foto 2" %></br>
-            <%= f.text_field :url2, autofocus: true, class:"form-control" %>
-            <% if @couch.errors.messages[:url2] && !@couch.errors.messages[:url2].empty? %>
-                <%= "La url no es valida" %>
-              <%end%>
-          </div>
-          <div class="form-group">
-            <%= f.label :url3, "Foto 3" %></br>
-            <%= f.text_field :url3, autofocus: true, class:"form-control" %>
-            <% if @couch.errors.messages[:url3] && !@couch.errors.messages[:url3].empty? %>
-                <%= "La url no es valida" %>
-              <%end%>
-          </div>
           <div class="form-group">
               <%= f.label :descripcion, "Descripcion" %><br />
               <%= f.text_area :descripcion, autofocus: true, class:"form-control" %>

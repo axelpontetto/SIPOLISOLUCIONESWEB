@@ -14,8 +14,6 @@
           <th>Fecha de Ingreso</th>
           <th>Fecha de Egreso</th>
           <th>Confirmacion</th>
-          <th>Valorar Couch</th>
-          <th>Valorar Usuario</th>
         </tr>
         </thead>
 
@@ -32,21 +30,8 @@
             <td><%= reservation.fech_egr %></td>
             <% if reservation.confirmacion == false %>
               <td>En espera</td>
-              <td>No permitido</td>
-              <td>No permitido</td>
             <%else%>
               <td>Confirmada</td>
-              <% if reservation.valorar == false %>
-                <td><%=link_to "Generar Valoracion", new_couch_valoration_path(couch_id: reservation.couch.id, reservation_id: reservation.id )%></td>
-              <%else%>
-                <td>Valoracion Realizada </td>
-              <%end%>
-
-              <% if reservation.valorar_user == false %>
-                 <td> <%=link_to"Generar Valoracion", new_valoration_user_path(user_id: reservation.couch.user_id,  reservation_id: reservation.id) %>  </td>
-              <%else%>
-                 <td>Valoracion Realizada</td>
-              <%end%>
             <%end%>
             </tr>
        </tbody>

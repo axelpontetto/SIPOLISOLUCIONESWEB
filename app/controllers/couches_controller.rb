@@ -19,7 +19,7 @@ class CouchesController < ApplicationController
   end
 
   def create
-    @couch = Couch.new(params.require(:couch).permit(:nombre, :descripcion, :user_id, :category_id, :ciudad, :provincia, :capacidad, :url))
+    @couch = Couch.new(params.require(:couch).permit(:nombre, :descripcion, :user_id, :category_id, :ciudad, :provincia, :capacidad))
     @couch.user_id = current_user.id
     if @couch.save
       flash[:notice] = "Couch creado correctamente."
@@ -31,7 +31,7 @@ class CouchesController < ApplicationController
   end
 
   def update
-    if @couch.update(params.require(:couch).permit(:nombre, :descripcion, :category_id, :ciudad, :provincia, :capacidad, :url))
+    if @couch.update(params.require(:couch).permit(:nombre, :descripcion, :category_id, :ciudad, :provincia, :capacidad))
       flash[:notice] = "Couch editado correctamente."
       redirect_to couches_path
     else

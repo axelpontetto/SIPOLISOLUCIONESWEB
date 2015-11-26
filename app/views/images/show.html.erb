@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @image.url %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @image.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @image.user_id %>
+</p>
+
+<p>
+  <strong>Integer:</strong>
+  <%= @image.integer %>
+</p>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

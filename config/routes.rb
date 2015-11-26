@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   resources :valoration_users
   resources :reservations do
     get 'myreservations', on: :collection
