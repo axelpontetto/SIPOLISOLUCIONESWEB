@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <%- model_class = Payment -%>
 <body class="payment-new">
 
@@ -8,3 +9,8 @@
 <%= render :partial => 'form' %>
 
 </body>
+<%else%>
+  <script type="text/javascript">
+    window.location.href="/users/sign_in"  // put your correct path in a string here
+  </script>
+<% end %>

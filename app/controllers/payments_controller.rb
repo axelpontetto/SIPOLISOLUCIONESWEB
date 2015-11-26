@@ -29,7 +29,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
 
     respond_to do |format|
-      if (@payment.save) &&(verificacion.first == 1)
+      if (verificacion.first == 1) &&(@payment.save)
         current_user.premium=true
         current_user.save
         format.html { redirect_to payments_path, notice: 'El pago fue concretado correctamente. Ahora sos premium!' }
