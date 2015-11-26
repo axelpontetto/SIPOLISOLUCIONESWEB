@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  couch_id: 1
+  user_id: 1
+  fech_ing: 2015-11-24
+  fech_egr: 2015-11-24
+
+two:
+  couch_id: 1
+  user_id: 1
+  fech_ing: 2015-11-24
+  fech_egr: 2015-11-24

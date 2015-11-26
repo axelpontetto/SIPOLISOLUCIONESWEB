@@ -1,0 +1,31 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Valoracion de Couch</h2>
+    </div>
+    <div class="panel-body">
+        <% couch= Couch.find(@valoration.couch_id)%>
+        <% n = get_prom(couch).to_i %>
+
+        <% x = 1 %>
+
+        <% loop do %>
+             <% x += 1%>
+            <%= link_to image_tag("star.png", alt: "New Think Tank"), 
+            {:controller => 'couches', :action => 'index' },     
+            {:class => 'starLogo'} %>
+            <% break if x > n %>
+         <% end %>
+
+        <%= form_for([couch, couch.valorations.build]) do |f| %>
+                <h2>Valorar Couch</h2>
+                 <h4>Valorar(1 a 5): <%= f.text_field :valor %> </h4>
+                <h4><%= f.submit "Valorar" %></h4>
+        <% end %>
+                
+    </div>
+ </div>
+
+<h2>Valoraciones</h2>
+<% couch.valorations.each do |valoration|%>
+     <h4>Valor: <%= valoration.valor %> </h4>
+<% end %>

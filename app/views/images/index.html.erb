@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Text</th>
+      <th>User</th>
+      <th>Integer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.url %></td>
+        <td><%= image.text %></td>
+        <td><%= image.user_id %></td>
+        <td><%= image.integer %></td>
+        <td><%= link_to 'Show', image %></td>
+        <td><%= link_to 'Edit', edit_image_path(image) %></td>
+        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image', new_image_path %>
+<%else%>
+  <script type="text/javascript">
+    window.location.href="/users/sign_in"  // put your correct path in a string here
+  </script>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Valoration Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Valor</th>
+      <th>User</th>
+      <th>Reservation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @valoration_users.each do |valoration_user| %>
+      <tr>
+        <td><%= valoration_user.valor %></td>
+        <td><%= valoration_user.user_id %></td>
+        <td><%= valoration_user.reservation_id %></td>
+        <td><%= link_to 'Show', valoration_user %></td>
+        <td><%= link_to 'Edit', edit_valoration_user_path(valoration_user) %></td>
+        <td><%= link_to 'Destroy', valoration_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Valoration user', new_valoration_user_path %>

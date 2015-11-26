@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Reservas de mis Couches
+  </div>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-body">
+    <div class="row">
+       <% Couch.where(user_id: current_user.id).each do |couch| %>
+         <% couch.reservations.each do |reservation| %>
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Couch</th>
+          <th>Usuario</th>
+          <th>Fech Ingreso</th>
+          <th>Fech Egreso</th>
+          <th>Confirmacion</th>
+          <th>Cancelar</th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+          <tr>
+            <td><%= couch.nombre %></td>
+           <td><%= reservation.user.name %></td>
+            <td><%= reservation.fech_ing %></td>
+            <td><%= reservation.fech_egr %></td>
+            <% if reservation.confirmacion == false %>
+              <td><%= link_to 'Confirmar reserva', reservation, method: :put %></td>
+            <%else%>
+              <td>Confirmada</td>
+            <%end%>
+            <td><%= link_to 'Cancelar Reserva', reservation, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+          </tr>
+       </tbody>
+       </table>
+           <%end%>
+         <%end%>
+    
+
+    </div>
+  </div>
+</div>

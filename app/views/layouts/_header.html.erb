@@ -1,0 +1,102 @@
+<header>
+
+<nav class="navbar navbar-default">
+<div class="col-md-6 col-md-offset-3">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <li><%= link_to "Inicio", root_path %></li>
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Editar Perfil", edit_user_registration_path %></li>
+              <li><%= link_to "Cambiar contraseña"%> </li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Borrar mi cuenta", registration_path(current_user), data: { confirm: "Esta seguro?" }, method: :delete%></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+                 <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reserva<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Reservas de mis Couches", reservations_path%> </li>              
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Mis reservas", myreservations_reservations_path%></li>             
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Couch<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Crear Couch", new_couch_path%> </li>              
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Ver todos los Couches", couches_path%></li>
+              <li><%= link_to "Ver mis couches", mycouches_couches_path%> </li>              
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "otra"%></li>
+            </ul>
+          </li>
+          <% if current_user.admin? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Crear", new_category_path %></li>
+                <li><%= link_to "Ver categorias", categories_path %></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            <%end%>
+            <% if current_user.premium == true %>
+                 <li><%= link_to "Cuenta", payments_path %></li>
+            <%else%>
+                 <li><%= link_to "Ser Premium", payments_path %></li>
+             <%end%>
+        <%else%>
+          <li><%= link_to "Ver Couches", couches_path %></li>
+        <%end%>
+
+        </ul>  
+             
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Buscar un couch">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+      </form>
+<!--This is a comment. Comments are not displayed in the browser
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul> -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </div>
+</nav>
+
+</header>

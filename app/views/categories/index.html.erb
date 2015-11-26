@@ -1,0 +1,46 @@
+<% if user_signed_in?%>
+ <%if current_user.admin==true%>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Listado de categorias</h3>
+  </div>
+</div>
+        <% Category.all.each do |category|%>
+        <div class="panel panel-success">
+            <div class="panel-body">
+                <div class="row">                
+
+                    <div class="col-md-6 col-md-offset-3">
+
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><%=category.nombre%></h3>
+                            </div>
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-xs-6"><%= button_to "Borrar", category ,:class => "btn btn-success", :method => :delete, data: { confirm: 'Va a eliminar una categoria. Esta seguro?' }%></br>
+                                </div>
+                                <div class="col-xs-6">
+                                <%= button_to "Editar", edit_category_path(category) ,:class => "btn btn-success", :method => :get%>
+                                </div>
+                            </div>                     
+                        </div>
+                    </div>
+                    </div>
+                </div>              
+            </div>
+        </div>
+        <%end%>
+    </div>
+</div>
+    <%else%>
+        <script type="text/javascript">
+            window.location.href="/"  // put your correct path in a string here
+        </script>
+    <%end%> 
+<%else%>
+  <script type="text/javascript">
+    window.location.href="/users/sign_in"  // put your correct path in a string here
+  </script>
+<% end %>   

@@ -1,0 +1,40 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Mis Reservas</h3>
+  </div>
+</div>
+
+<% current_user.reservations.each do |reservation| %>
+
+ <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Couch Reservado</th>
+          <th>Usuario</th>
+          <th>Fecha de Ingreso</th>
+          <th>Fecha de Egreso</th>
+          <th>Confirmacion</th>
+        </tr>
+        </thead>
+
+      <tbody>
+
+          <tr>
+            <td><%= reservation.couch.nombre %></td>
+            <% if reservation.confirmacion == true %>
+              <td><%= link_to "Ver Contacto", mydates_reservation_path(id: reservation.id) %></td>
+            <%else%>
+                <td>Esperando Confirmacion</td>
+            <%end%>
+            <td><%= reservation.fech_ing %></td>
+            <td><%= reservation.fech_egr %></td>
+            <% if reservation.confirmacion == false %>
+              <td>En espera</td>
+            <%else%>
+              <td>Confirmada</td>
+            <%end%>
+            </tr>
+       </tbody>
+       </table>
+
+<%end%>

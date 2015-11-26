@@ -1,0 +1,103 @@
+<!-- Page Content -->
+    <div class="container">
+
+        <!-- Heading Row -->
+        <div class="row">
+            <div class="col-md-8">
+                <%= image_tag "couchInn.jpg", class: "img-responsive img-rounded" %>
+            </div>
+            <!-- /.col-md-8 -->
+
+            <div class="col-md-4">
+                <h2 align='centter'>Bienvenido a Couch Inn</h2>
+
+                    <% if user_signed_in? %>
+                        </h3>Gracias por pertenecer a couch Inn <%=current_user.apellido%>, <%=current_user.name%></h3>
+                
+                     <%else%>
+
+                    <div class="col-md-6 col-md-offset-3">
+                
+                        <%= button_to "Registrarse", new_user_registration_path, :class => "btn btn-success btn-block", :method => :get%></br>                        
+                        
+                        <%= button_to "Ingresar", new_user_session_path, :class => "btn btn-success btn-block", :method => :get%>
+                    
+                    </div> 
+
+                    <%end%>
+                
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Call to Action Well -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well text-center">
+                    Servicios que ofrece Couch Inn
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Buscar Couches</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h2>Publicar Couches</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h2>Reservar Couches</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Contactar Personas</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h2>Convertirse en Premium</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h2>Reservar Couches</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Footer
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer> -->
+
+    </div>
+    <!-- /.container -->

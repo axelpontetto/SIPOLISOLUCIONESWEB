@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Couch:</strong>
+  <%= @reservation.couch.nombre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reservation.user.name%>
+</p>
+
+<p>
+  <strong>Fecha de Ingreso:</strong>
+  <%= @reservation.fech_ing %>
+</p>
+
+<p>
+  <strong>Fecha de Egreso:</strong>
+  <%= @reservation.fech_egr %>
+</p>
+
+<%= link_to 'Ver mis reservas', myreservations_reservations_path,:class => "btn btn-success" %>
